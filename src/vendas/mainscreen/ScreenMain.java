@@ -2,6 +2,8 @@ package vendas.mainscreen;
 
 import vendas.internalframes.TabelaClientes;
 import java.awt.CardLayout;
+import java.sql.Date;
+import vendas.internalframes.TabelaCompras;
 import vendas.internalframes.TabelaProdutos;
 
 
@@ -9,8 +11,7 @@ public class ScreenMain extends javax.swing.JFrame {
 
     
     public ScreenMain() {
-        initComponents();
-        
+        initComponents();  
     }
 
     @SuppressWarnings("unchecked")
@@ -48,15 +49,19 @@ public class ScreenMain extends javax.swing.JFrame {
         isQntProduto = new javax.swing.JCheckBox();
         isPrecoProduto = new javax.swing.JCheckBox();
         jPanelVendas = new javax.swing.JPanel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        iDVendas = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        isIDCliente = new javax.swing.JCheckBox();
+        jButtonClientes = new javax.swing.JButton();
+        dia = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
+        iDClienteVenda = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        isIDProdutoCliente = new javax.swing.JCheckBox();
+        ano = new javax.swing.JFormattedTextField();
+        mes = new javax.swing.JFormattedTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jDesktop = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
@@ -209,12 +214,32 @@ public class ScreenMain extends javax.swing.JFrame {
         op1Produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=", ">", "<" }));
 
         isNomeProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isNomeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isNomeProdutoActionPerformed(evt);
+            }
+        });
 
         isIDProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isIDProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isIDProdutoActionPerformed(evt);
+            }
+        });
 
         isQntProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isQntProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isQntProdutoActionPerformed(evt);
+            }
+        });
 
         isPrecoProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isPrecoProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isPrecoProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProdutosLayout = new javax.swing.GroupLayout(jPanelProdutos);
         jPanelProdutos.setLayout(jPanelProdutosLayout);
@@ -289,34 +314,63 @@ public class ScreenMain extends javax.swing.JFrame {
 
         jPanelVendas.setBackground(new java.awt.Color(61, 61, 61));
 
-        jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        jFormattedTextField5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        iDVendas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        iDVendas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("ID:");
 
-        jCheckBox8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isIDCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isIDCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isIDClienteActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 102));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton3.setText("Buscar");
+        jButtonClientes.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonClientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonClientes.setText("Buscar");
+        jButtonClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClientesActionPerformed(evt);
+            }
+        });
 
-        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jFormattedTextField6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        dia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd"))));
+        dia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Data dia / mes / ano:");
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        jFormattedTextField7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        iDClienteVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        iDClienteVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("ID do Cliente:");
 
-        jCheckBox9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isIDProdutoCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        isIDProdutoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isIDProdutoClienteActionPerformed(evt);
+            }
+        });
+
+        ano.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy"))));
+        ano.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        mes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("MM"))));
+        mes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabel10.setText("/");
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabel13.setText("/");
 
         javax.swing.GroupLayout jPanelVendasLayout = new javax.swing.GroupLayout(jPanelVendas);
         jPanelVendas.setLayout(jPanelVendasLayout);
@@ -327,23 +381,31 @@ public class ScreenMain extends javax.swing.JFrame {
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelVendasLayout.createSequentialGroup()
                         .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField6))
                             .addComponent(jLabel9)
                             .addGroup(jPanelVendasLayout.createSequentialGroup()
-                                .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iDVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox8)))
+                                .addComponent(isIDCliente))
+                            .addGroup(jPanelVendasLayout.createSequentialGroup()
+                                .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelVendasLayout.createSequentialGroup()
                         .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addGroup(jPanelVendasLayout.createSequentialGroup()
-                                .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iDClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox9))
-                            .addComponent(jButton3))
+                                .addComponent(isIDProdutoCliente))
+                            .addComponent(jButtonClientes)
+                            .addComponent(jLabel11))
                         .addContainerGap(20, Short.MAX_VALUE))))
         );
         jPanelVendasLayout.setVerticalGroup(
@@ -352,21 +414,26 @@ public class ScreenMain extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox8))
+                    .addComponent(iDVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(isIDCliente))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox9))
+                    .addComponent(iDClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(isIDProdutoCliente))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(jButtonClientes)
                 .addContainerGap(316, Short.MAX_VALUE))
         );
 
@@ -562,6 +629,63 @@ public class ScreenMain extends javax.swing.JFrame {
         tb.setVisible(true);
     }//GEN-LAST:event_jButtonProdutoActionPerformed
 
+    private void isIDProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isIDProdutoActionPerformed
+        // TODO add your handling code here:
+        if(isIDProduto.isSelected()){
+            isNomeProduto.setSelected(false);
+            isQntProduto.setSelected(false);
+            isPrecoProduto.setSelected(false);
+        }
+    }//GEN-LAST:event_isIDProdutoActionPerformed
+
+    private void isNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isNomeProdutoActionPerformed
+       unselectID();
+    }//GEN-LAST:event_isNomeProdutoActionPerformed
+
+    private void isQntProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isQntProdutoActionPerformed
+        unselectID();
+    }//GEN-LAST:event_isQntProdutoActionPerformed
+
+    private void isPrecoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isPrecoProdutoActionPerformed
+        unselectID();
+    }//GEN-LAST:event_isPrecoProdutoActionPerformed
+
+    private void jButtonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientesActionPerformed
+        if(isIDCliente.isSelected()){
+            TabelaCompras tb = new TabelaCompras(Integer.parseInt(iDVendas.getText()));
+            jDesktop.add(tb);
+            tb.setVisible(true); 
+        }else if(isIDProdutoCliente.isSelected()){
+            TabelaCompras tb = new TabelaCompras(Integer.parseInt(iDClienteVenda.getText()), true);
+            jDesktop.add(tb);
+            tb.setVisible(true); 
+        }else{
+           TabelaCompras tb = new TabelaCompras(ano.getText(), mes.getText(), dia.getText());
+            jDesktop.add(tb);
+            tb.setVisible(true); 
+        }
+        
+        
+    }//GEN-LAST:event_jButtonClientesActionPerformed
+
+    private void isIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isIDClienteActionPerformed
+        if(isIDProdutoCliente.isSelected()){
+            isIDProdutoCliente.setSelected(false);
+        }
+        
+    }//GEN-LAST:event_isIDClienteActionPerformed
+
+    private void isIDProdutoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isIDProdutoClienteActionPerformed
+        if(isIDCliente.isSelected()){
+            isIDCliente.setSelected(false);
+        }
+    }//GEN-LAST:event_isIDProdutoClienteActionPerformed
+    
+    private void unselectID(){
+        if(isIDProduto.isSelected()){
+           isIDProduto.setSelected(false);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -599,27 +723,30 @@ public class ScreenMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField ano;
+    private javax.swing.JFormattedTextField dia;
+    private javax.swing.JFormattedTextField iDClienteVenda;
     private javax.swing.JFormattedTextField iDProduto;
+    private javax.swing.JFormattedTextField iDVendas;
+    private javax.swing.JCheckBox isIDCliente;
     private javax.swing.JCheckBox isIDProduto;
+    private javax.swing.JCheckBox isIDProdutoCliente;
     private javax.swing.JCheckBox isNomeProduto;
     private javax.swing.JCheckBox isPrecoProduto;
     private javax.swing.JCheckBox isQntProduto;
     private javax.swing.JCheckBox isjCheckBoxId;
     private javax.swing.JCheckBox isjNomeCliente;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCliente;
+    private javax.swing.JButton jButtonClientes;
     private javax.swing.JButton jButtonProduto;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1Opcao;
     private javax.swing.JDesktopPane jDesktop;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JFormattedTextField jIDCliente;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -643,6 +770,7 @@ public class ScreenMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLayout;
     private javax.swing.JPanel jPanelProdutos;
     private javax.swing.JPanel jPanelVendas;
+    private javax.swing.JFormattedTextField mes;
     private javax.swing.JTextField nomeProduto;
     private javax.swing.JComboBox<String> op1Produto;
     private javax.swing.JComboBox<String> op2Produto;

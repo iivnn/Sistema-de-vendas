@@ -127,7 +127,7 @@ public class ProdutoDAO {
     
     public List<Produto> read(String nome, double preco, char op){
         List<Produto> produtos = new ArrayList<>();
-        String query = "SELECT * FROM produto WHERE nome_produto LIKE ? AND qnt_produto";
+        String query = "SELECT * FROM produto WHERE nome_produto LIKE ? AND preco_produto";
         query += op + " ?";
        try {
            stmt = con.prepareStatement(query);
@@ -166,14 +166,14 @@ public class ProdutoDAO {
     
     public List<Produto> read(String nome, int qnt, char op, double preco, char op2){
         List<Produto> produtos = new ArrayList<>();
-        String query = "SELECT * FROM produto WHERE nome_produto LIKE ? AND qnt_produto";
+        String query = "SELECT * FROM produto WHERE nome_produto LIKE ? AND qnt_produto ";
         query += op + " ? AND preco_produto ";
         query += op2 + " ?";
        try {
            stmt = con.prepareStatement(query);
-           stmt.setInt(1, qnt);
-           stmt.setString(2, "%"+nome+"%");
-           stmt.setInt(3, qnt);
+           stmt.setInt(2, qnt);
+           stmt.setString(1, "%"+nome+"%");
+           stmt.setDouble(3, preco);
            rs = stmt.executeQuery();
            produtos = cretateList();
        } catch (SQLException ex) {
