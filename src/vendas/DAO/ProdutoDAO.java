@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vendas.beans.Produto;
 
 public class ProdutoDAO {
@@ -17,6 +19,25 @@ public class ProdutoDAO {
 
     public ProdutoDAO() {
         this.con = ConnectionFactory.getConnection();
+    }
+    
+    
+    public boolean create(Produto produto){
+        String query = "INSERT INTO produto VALUES (DEFAULT, ?, ?, ?)";
+        boolean b = false;
+        try {
+           stmt = con.prepareStatement(query);
+           stmt.setString(1, produto.getNome());
+           stmt.setInt(2, produto.getQnt());
+           stmt.setDouble(3, produto.getPreco());
+           stmt.executeUpdate();
+           b = true;
+        } catch (SQLException ex) {
+           System.err.println("erro: " + ex);
+        }finally{
+           ConnectionFactory.closeConnection(con,stmt);
+       }
+        return b;
     }
     
 

@@ -2,7 +2,6 @@ package vendas.mainscreen;
 
 import vendas.internalframes.TabelaClientes;
 import java.awt.CardLayout;
-import java.sql.Date;
 import vendas.internalframes.TabelaCompras;
 import vendas.internalframes.TabelaProdutos;
 
@@ -67,9 +66,10 @@ public class ScreenMain extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -526,20 +526,40 @@ public class ScreenMain extends javax.swing.JFrame {
 
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem1.setText("Novo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuItem2.setText("Excluir");
-        jMenu1.add(jMenuItem2);
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem3.setText("Atualizar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar2.add(jMenu1);
 
         jMenu2.setText("Produto");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem2.setText("Novo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem4.setText("Atualizar");
+        jMenu2.add(jMenuItem4);
+
         jMenuBar2.add(jMenu2);
 
         jMenu5.setText("Venda");
@@ -680,6 +700,21 @@ public class ScreenMain extends javax.swing.JFrame {
             isIDCliente.setSelected(false);
         }
     }//GEN-LAST:event_isIDProdutoClienteActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ClienteCreate novo = new ClienteCreate(this, true);
+        novo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        ClienteUpdate novo = new ClienteUpdate(this, true);
+        novo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ProdutoCreate novo = new ProdutoCreate(this, true);
+        novo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     private void unselectID(){
         if(isIDProduto.isSelected()){
@@ -762,6 +797,7 @@ public class ScreenMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JTextField jNomeCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
