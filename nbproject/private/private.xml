@@ -8,11 +8,10 @@
             <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/DAO/CompraDAO.java</file>
             <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/mainscreen/ClienteCreate.java</file>
             <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/mainscreen/ScreenMain.java</file>
-            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/DAO/ClienteDAO.java</file>
-            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/internalframes/TabelaProdutos.java</file>
+            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/mainscreen/VendaCreate.java</file>
+            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/mainscreen/ClienteUpdate.java</file>
+            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/mainscreen/ProdutoUpdate.java</file>
             <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/DAO/ProdutoDAO.java</file>
-            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/beans/Compra.java</file>
-            <file>file:/C:/Users/ivan/Documents/NetBeansProjects/Sistema%20de%20vendas/src/vendas/internalframes/TabelaClientes.java</file>
         </group>
     </open-files>
 </project-private>

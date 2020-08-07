@@ -336,8 +336,7 @@ public class VendaCreate extends javax.swing.JDialog {
             jLabel5.setText("Total: R$" + String.format("%.2f", tot));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    
+ 
     private void updateTable(){
         DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
         tb.setRowCount(0);
@@ -349,6 +348,7 @@ public class VendaCreate extends javax.swing.JDialog {
             });
         });
     }
+    
     private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
         jSlider1.setValue(1);
         jSlider1.setMaximum(produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt());
@@ -359,14 +359,13 @@ public class VendaCreate extends javax.swing.JDialog {
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    
     private void createAllProducts(){
         ProdutoDAO dao = new ProdutoDAO();
         
@@ -378,8 +377,6 @@ public class VendaCreate extends javax.swing.JDialog {
             
         });
     }
-    
-    
     
     /**
      * @param args the command line arguments
