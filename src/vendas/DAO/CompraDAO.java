@@ -2,11 +2,15 @@ package vendas.DAO;
 
 import connection.factory.ConnectionFactory;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vendas.beans.Cliente;
 import vendas.beans.Compra;
 import vendas.beans.Produto;
@@ -19,6 +23,46 @@ public class CompraDAO {
 
     public CompraDAO() {
         this.con = ConnectionFactory.getConnection();
+    }
+    
+    
+    public boolean newCodigo(int id){
+        String query = "INSERT INTO codigo VALUES (DEFAULT, ?, ?)";
+        boolean b = false;
+        try {
+            stmt = con.prepareStatement(query);
+            Date d = new Date(new GregorianCalendar().getTimeInMillis());
+            stmt.setString(1, d.toString());
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+            b = true;
+        } catch (SQLException ex) {
+            System.err.println("erro: " + ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return b;
+    }
+    
+    public int findLastCodigo(int id){
+        String query = "SELECT id_codigo from codigo WHERE data_codigo = ? AND "
+                    + "fk_cliente_codigo = ? ORDER BY `id_codigo` DESC LIMIT 1";
+        int idCodigo = -1;
+        try {
+            stmt = con.prepareStatement(query);
+            Date d = new Date(new GregorianCalendar().getTimeInMillis());
+            stmt.setString(1, d.toString());
+            stmt.setInt(2, id);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                idCodigo = rs.getInt("id_codigo");
+            }
+        } catch (SQLException ex) {
+            System.err.println("erro: " + ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return idCodigo;
     }
     
     public List<Compra> read(String data){

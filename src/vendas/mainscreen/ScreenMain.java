@@ -71,6 +71,7 @@ public class ScreenMain extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Vendas");
@@ -558,12 +559,22 @@ public class ScreenMain extends javax.swing.JFrame {
 
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem4.setText("Atualizar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar2.add(jMenu2);
 
         jMenu5.setText("Venda");
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuItem5.setText("Novo");
+        jMenu5.add(jMenuItem5);
+
         jMenuBar2.add(jMenu5);
 
         setJMenuBar(jMenuBar2);
@@ -715,6 +726,12 @@ public class ScreenMain extends javax.swing.JFrame {
         ProdutoCreate novo = new ProdutoCreate(this, true);
         novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ProdutoUpdate novo = new ProdutoUpdate(this, true);
+        novo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
     
     private void unselectID(){
         if(isIDProduto.isSelected()){
@@ -798,6 +815,7 @@ public class ScreenMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JTextField jNomeCliente;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

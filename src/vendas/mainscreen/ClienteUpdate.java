@@ -1,7 +1,6 @@
 
 package vendas.mainscreen;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import vendas.DAO.ClienteDAO;
@@ -14,7 +13,6 @@ public class ClienteUpdate extends javax.swing.JDialog {
     public ClienteUpdate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        clientes = new ArrayList<>();
         ClienteDAO dao = new ClienteDAO();
         clientes = dao.readAll();
         clientes.forEach(item -> {
@@ -61,7 +59,7 @@ public class ClienteUpdate extends javax.swing.JDialog {
         jNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jButtonAtualizar.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonAtualizar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonAtualizar.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jButtonAtualizar.setText("Atualizar");
         jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +87,7 @@ public class ClienteUpdate extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(259, 259, 259)
                                 .addComponent(jButtonAtualizar)))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -40,6 +40,27 @@ public class ProdutoDAO {
         return b;
     }
     
+    
+    public boolean update(Produto produto){
+        String query = "UPDATE produto SET nome_produto = ?, "
+                + "qnt_produto = ?, preco_produto = ? WHERE "
+                + "produto.id_produto = ?";
+        boolean b  = false;
+       try {
+           stmt = con.prepareStatement(query);
+           stmt.setString(1, produto.getNome());
+           stmt.setInt(2, produto.getQnt());
+           stmt.setDouble(3, produto.getPreco());
+           stmt.setInt(4, produto.getId());
+           stmt.executeUpdate();
+           b = true;
+       } catch (SQLException ex) {
+           System.err.println("erro: " + ex);
+       }finally{
+           ConnectionFactory.closeConnection(con,stmt,rs);
+       }
+       return b;
+    }
 
     public List<Produto> read(){
         List<Produto> produtos = new ArrayList<>();

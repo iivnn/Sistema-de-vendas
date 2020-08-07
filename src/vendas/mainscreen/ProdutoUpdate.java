@@ -1,20 +1,22 @@
-
 package vendas.mainscreen;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import vendas.DAO.ProdutoDAO;
 import vendas.beans.Produto;
 
-public class ProdutoCreate extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ProdutoCreate
-     * @param parent
-     * @param modal
-     */
-    public ProdutoCreate(java.awt.Frame parent, boolean modal) {
+public class ProdutoUpdate extends javax.swing.JDialog{
+    private List<Produto> produtos;
+    
+    public ProdutoUpdate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ProdutoDAO dao = new ProdutoDAO();
+        produtos = dao.read();
+        produtos.forEach(item -> {
+            jComboBoxProduto.addItem(item.getId() +" - "+ item.getNome());
+        });
     }
 
     /**
@@ -34,16 +36,18 @@ public class ProdutoCreate extends javax.swing.JDialog {
         precoProduto = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         nomeProduto = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBoxProduto = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Produto");
+        setTitle("Atualizar produto");
         setResizable(false);
 
         jPanelProdutos.setBackground(new java.awt.Color(61, 61, 61));
 
         jButtonProduto.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonProduto.setFont(new java.awt.Font("Bahnschrift", 2, 14)); // NOI18N
-        jButtonProduto.setText("Cadastrar");
+        jButtonProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonProduto.setText("Atualizar");
         jButtonProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProdutoActionPerformed(evt);
@@ -70,12 +74,22 @@ public class ProdutoCreate extends javax.swing.JDialog {
 
         nomeProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Produto:");
+
+        jComboBoxProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxProdutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelProdutosLayout = new javax.swing.GroupLayout(jPanelProdutos);
         jPanelProdutos.setLayout(jPanelProdutosLayout);
         jPanelProdutosLayout.setHorizontalGroup(
             jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelProdutosLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdutosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -87,11 +101,21 @@ public class ProdutoCreate extends javax.swing.JDialog {
                                 .addComponent(qntProduto)
                                 .addComponent(precoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(nomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(86, 86, 86))
+            .addGroup(jPanelProdutosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanelProdutosLayout.setVerticalGroup(
             jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelProdutosLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdutosLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,7 +130,7 @@ public class ProdutoCreate extends javax.swing.JDialog {
                 .addComponent(precoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonProduto)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,44 +150,36 @@ public class ProdutoCreate extends javax.swing.JDialog {
 
     private void jButtonProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProdutoActionPerformed
         Produto p = new Produto();
-        String nome = nomeProduto.getText().trim().toUpperCase();
-        int qnt;
-        double preco;
-        if(!"".equals(qntProduto.getText())){
-             qnt = Integer.parseInt(qntProduto.getText());
-        }else{
-            qnt = -1;
-        }
-        if(!"".equals(precoProduto.getText())){
-             preco = Double.parseDouble(precoProduto.getText());
-        }else{
-            preco = -1;
-        }
-        if(nome.length() > 40){
-            JOptionPane.showMessageDialog(null, "O nome não pode ter mais de 40 caracteres!");
+        if("".equals(nomeProduto.getText()) || nomeProduto.getText().trim().length() > 40){
+            JOptionPane.showMessageDialog(null, "Nome inválido!");
             nomeProduto.grabFocus();
-        }else if(nome.length() == 0){
-            JOptionPane.showMessageDialog(null, "O nome não pode ser nulo!");
-            nomeProduto.grabFocus();    
-        }else if(qnt < 0 || "".equals(qntProduto.getText())){
-            JOptionPane.showMessageDialog(null, "Quantidade Inválida!");
+        }else if(Integer.parseInt(qntProduto.getText()) < 0){
+            JOptionPane.showMessageDialog(null, "Quantidade inválida!");
             qntProduto.grabFocus();
-        }else if(preco <= 0 || "".equals(precoProduto.getText())){
-            JOptionPane.showMessageDialog(null, "Preço Inválido!");
+        }else if(Double.parseDouble(precoProduto.getText()) <= 0){
+           JOptionPane.showMessageDialog(null, "Preço inválido!");
             precoProduto.grabFocus(); 
         }else{
+            p.setNome(nomeProduto.getText().trim().toUpperCase());
+            p.setQnt(Integer.parseInt(qntProduto.getText()));
+            p.setPreco(Double.parseDouble(precoProduto.getText()));
+            p.setId(produtos.get(jComboBoxProduto.getSelectedIndex()).getId());
             ProdutoDAO dao = new ProdutoDAO();
-            p.setNome(nome);
-            p.setQnt(qnt);
-            p.setPreco(preco);
-            if(dao.create(p)){
-               JOptionPane.showMessageDialog(null, "Produto Cadastrado com sucesso!");
+            if(dao.update(p)){
+               JOptionPane.showMessageDialog(null, "Atualizado com sucesso!"); 
             }else{
-              JOptionPane.showMessageDialog(null, "Falha ao cadastrar!"); 
+               JOptionPane.showMessageDialog(null, "Não foi possível atualizar!"); 
             }
-            this.dispose(); 
+            this.dispose();
+            
         }
     }//GEN-LAST:event_jButtonProdutoActionPerformed
+
+    private void jComboBoxProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProdutoActionPerformed
+        nomeProduto.setText(produtos.get(jComboBoxProduto.getSelectedIndex()).getNome());
+        qntProduto.setText(Integer.toString(produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt()));
+        precoProduto.setText(Double.toString(produtos.get(jComboBoxProduto.getSelectedIndex()).getPreco()));
+    }//GEN-LAST:event_jComboBoxProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,20 +198,20 @@ public class ProdutoCreate extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProdutoCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProdutoCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProdutoCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProdutoCreate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutoUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ProdutoCreate dialog = new ProdutoCreate(new javax.swing.JFrame(), true);
+                ProdutoUpdate dialog = new ProdutoUpdate(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -209,6 +225,8 @@ public class ProdutoCreate extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonProduto;
+    private javax.swing.JComboBox<String> jComboBoxProduto;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -33,14 +33,14 @@ public class ClienteCreate extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(61, 61, 61));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nome:");
 
         jNomeCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jButtonCadastrar.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonCadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonCadastrar.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
