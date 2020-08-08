@@ -2,9 +2,13 @@
 
 Sistema de vendas simples para ter um controle básico pensado para micro empresas.
 
-Java SE versão 8.0.2610.12
+Java SE versão -> 8.0.2610.12
 
-NetBeans versão 12.0
+NetBeans versão -> 12.0
+
+Build Tool -> Apache ant
+
+
 
 
 
