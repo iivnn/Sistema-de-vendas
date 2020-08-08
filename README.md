@@ -13,3 +13,4 @@ NetBeans versão 12.0
 - Em ConnectionFactory você pode alterar a url, usuario e senha do banco de dados;
 - Para preencher as tabelas com os nomes corretos verificar a pasta /UML;
 - Executar o comando SET GLOBAL time_zone = '-3:00' quando criar o banco de dados;
+-Dump do banco de dados na pasta /dump.
