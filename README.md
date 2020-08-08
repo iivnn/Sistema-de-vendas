@@ -21,3 +21,5 @@ Build Tool -> Apache ant
 - Para preencher as tabelas com os nomes corretos verificar a pasta /UML;
 - Executar o comando SET GLOBAL time_zone = '-3:00' quando criar o banco de dados;
 - Dump do banco de dados na pasta /dump.
+
+![Alt text](/UML/modelo-relacional.png?raw=true "BD")
