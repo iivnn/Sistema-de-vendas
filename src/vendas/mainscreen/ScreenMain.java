@@ -2,6 +2,7 @@ package vendas.mainscreen;
 
 import vendas.internalframes.TabelaClientes;
 import java.awt.CardLayout;
+import java.sql.Date;
 import vendas.internalframes.TabelaCompras;
 import vendas.internalframes.TabelaProdutos;
 
@@ -61,6 +62,7 @@ public class ScreenMain extends javax.swing.JFrame {
         mes = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jButtonClientes1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jDesktop = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
@@ -137,7 +139,7 @@ public class ScreenMain extends javax.swing.JFrame {
                 .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelClientesLayout.createSequentialGroup()
                         .addComponent(jButtonCliente)
-                        .addContainerGap(193, Short.MAX_VALUE))
+                        .addContainerGap(194, Short.MAX_VALUE))
                     .addGroup(jPanelClientesLayout.createSequentialGroup()
                         .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +275,7 @@ public class ScreenMain extends javax.swing.JFrame {
                             .addComponent(isQntProduto)
                             .addComponent(isPrecoProduto)))
                     .addComponent(jButtonProduto))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanelProdutosLayout.setVerticalGroup(
             jPanelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,6 +375,15 @@ public class ScreenMain extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel13.setText("/");
 
+        jButtonClientes1.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonClientes1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonClientes1.setText("Hoje");
+        jButtonClientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClientes1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelVendasLayout = new javax.swing.GroupLayout(jPanelVendas);
         jPanelVendas.setLayout(jPanelVendasLayout);
         jPanelVendasLayout.setHorizontalGroup(
@@ -397,7 +408,7 @@ public class ScreenMain extends javax.swing.JFrame {
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 21, Short.MAX_VALUE))
                     .addGroup(jPanelVendasLayout.createSequentialGroup()
                         .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
@@ -405,9 +416,12 @@ public class ScreenMain extends javax.swing.JFrame {
                                 .addComponent(iDClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(isIDProdutoCliente))
-                            .addComponent(jButtonClientes)
+                            .addGroup(jPanelVendasLayout.createSequentialGroup()
+                                .addComponent(jButtonClientes)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonClientes1))
                             .addComponent(jLabel11))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         jPanelVendasLayout.setVerticalGroup(
             jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +448,9 @@ public class ScreenMain extends javax.swing.JFrame {
                     .addComponent(iDClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isIDProdutoCliente))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonClientes)
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonClientes)
+                    .addComponent(jButtonClientes1))
                 .addContainerGap(316, Short.MAX_VALUE))
         );
 
@@ -479,7 +495,7 @@ public class ScreenMain extends javax.swing.JFrame {
         jDesktop.setLayout(jDesktopLayout);
         jDesktopLayout.setHorizontalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addGap(0, 938, Short.MAX_VALUE)
         );
         jDesktopLayout.setVerticalGroup(
             jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,6 +589,11 @@ public class ScreenMain extends javax.swing.JFrame {
 
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuItem5.setText("Novo");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem5);
 
         jMenuBar2.add(jMenu5);
@@ -602,7 +623,9 @@ public class ScreenMain extends javax.swing.JFrame {
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
         String pNome = null, pId = null;
         if(isjNomeCliente.isSelected()){pNome = jNomeCliente.getText().toUpperCase().trim();}
-        if(isjCheckBoxId.isSelected()){pId = jIDCliente.getText().trim();}
+        if(isjCheckBoxId.isSelected() && jIDCliente.getText().isEmpty() == false ){
+            pId = jIDCliente.getText().trim();
+        }
         TabelaClientes tb = new TabelaClientes(pNome, pId);
         jDesktop.add(tb);
         tb.setVisible(true);
@@ -732,6 +755,38 @@ public class ScreenMain extends javax.swing.JFrame {
         ProdutoUpdate novo = new ProdutoUpdate(this, true);
         novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        VendaCreate novo = new VendaCreate(this, true);
+        novo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jButtonClientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientes1ActionPerformed
+        Date data = new Date(System.currentTimeMillis());
+        int cont = 0;
+        String y = "",m = "",d = "";
+        for(Character c: data.toString().toCharArray()){
+            if(c=='-'){
+                cont+= 1;
+            }else{
+                switch (cont){
+                    case 0:
+                        y += c;
+                        break;
+                    case 1:
+                        m += c;
+                        break;
+                    case 2:
+                        d += c;
+                        break;                  
+                }
+            }
+        }
+        ano.setText(y);
+        mes.setText(m);
+        dia.setText(d);
+        jButtonClientes.grabFocus();
+    }//GEN-LAST:event_jButtonClientes1ActionPerformed
     
     private void unselectID(){
         if(isIDProduto.isSelected()){
@@ -790,6 +845,7 @@ public class ScreenMain extends javax.swing.JFrame {
     private javax.swing.JCheckBox isjNomeCliente;
     private javax.swing.JButton jButtonCliente;
     private javax.swing.JButton jButtonClientes;
+    private javax.swing.JButton jButtonClientes1;
     private javax.swing.JButton jButtonProduto;
     private javax.swing.JComboBox<String> jComboBox1Opcao;
     private javax.swing.JDesktopPane jDesktop;

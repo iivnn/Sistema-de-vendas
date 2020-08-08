@@ -30,6 +30,7 @@ public class VendaCreate extends javax.swing.JDialog {
             jComboBoxCliente.addItem(item.getId() +" - "+ item.getNome());
         });
         
+        
     }
 
     /**
@@ -46,6 +47,7 @@ public class VendaCreate extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jComboBoxCliente = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,8 +61,9 @@ public class VendaCreate extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Nova venda");
         setResizable(false);
 
@@ -86,6 +89,16 @@ public class VendaCreate extends javax.swing.JDialog {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(102, 102, 102));
+        jButton6.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Cancelar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -93,10 +106,12 @@ public class VendaCreate extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(198, 198, 198)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -108,7 +123,9 @@ public class VendaCreate extends javax.swing.JDialog {
                 .addComponent(jComboBoxCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, "cliente");
@@ -205,6 +222,16 @@ public class VendaCreate extends javax.swing.JDialog {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 102));
+        jButton5.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Remover");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -222,7 +249,9 @@ public class VendaCreate extends javax.swing.JDialog {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2))))
+                                .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +277,9 @@ public class VendaCreate extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(jButton5))
                     .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -316,24 +347,40 @@ public class VendaCreate extends javax.swing.JDialog {
             cl.show(jPanel1, "produto");
             createAllProducts();
         }else{
-            JOptionPane.showMessageDialog(null, "no");
+            JOptionPane.showMessageDialog(null, "Ocorreu algum erro!");
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(jSlider1.getValue() > 0){
-            Produto p = new Produto();
-            p.setId(produtos.get(jComboBoxProduto.getSelectedIndex()).getId());
-            p.setNome(produtos.get(jComboBoxProduto.getSelectedIndex()).getNome());
-            p.setPreco(produtos.get(jComboBoxProduto.getSelectedIndex()).getPreco());
-            p.setQnt(jSlider1.getValue());
-            int n = produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt() - jSlider1.getValue();
-            produtos.get(jComboBoxProduto.getSelectedIndex()).setQnt(n);
-            compras.add(p);
-            updateTable();
-            tot += p.getQnt() * p.getPreco();
+            int index = -1;
+            int cont = -1;
+            for(Produto p : compras){
+                cont += 1;
+                if(p.getId() == produtos.get(jComboBoxProduto.getSelectedIndex()).getId()){
+                    index = cont;
+                }    
+            }
+            if(index == -1){
+                Produto p = new Produto();
+                p.setId(produtos.get(jComboBoxProduto.getSelectedIndex()).getId());
+                p.setNome(produtos.get(jComboBoxProduto.getSelectedIndex()).getNome());
+                p.setPreco(produtos.get(jComboBoxProduto.getSelectedIndex()).getPreco());
+                p.setQnt(jSlider1.getValue());
+                compras.add(p);
+                int n = produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt(); 
+                produtos.get(jComboBoxProduto.getSelectedIndex()).setQnt(n - jSlider1.getValue());
+                tot += jSlider1.getValue() * produtos.get(jComboBoxProduto.getSelectedIndex()).getPreco();
+            }else{
+                compras.get(index).setQnt(compras.get(index).getQnt() + jSlider1.getValue());
+                int n = produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt();
+                produtos.get(jComboBoxProduto.getSelectedIndex()).setQnt(n - jSlider1.getValue());
+                tot += jSlider1.getValue() * produtos.get(jComboBoxProduto.getSelectedIndex()).getPreco();
+            }
             jSlider1.setMaximum(produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt());
-            jLabel5.setText("Total: R$" + String.format("%.2f", tot));
+            updateTable();
+            jLabel5.setText("Total: R$ " + String.format("%.2f", tot));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
  
@@ -359,12 +406,48 @@ public class VendaCreate extends javax.swing.JDialog {
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(compras.isEmpty() == false){
+            compras.forEach(_item -> {
+                CompraDAO dao = new CompraDAO();
+                dao.newCompra(_item, idCompra);
+                for(Produto p : produtos){
+                    if(p.getId() == _item.getId()){
+                        dao = new CompraDAO();
+                        dao.updateQnt(p);
+                    }
+                }
+            });
+            JOptionPane.showMessageDialog(null, "Operação concluida!\nToral da venda = R$" + String.format("%.2f", tot));
+            this.dispose();
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+        CompraDAO dao = new CompraDAO();
+        dao.cancelCodigo(idCompra);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int index = jTable1.getSelectedRow();
+        if(index!=-1){
+            int id = compras.get(index).getId();
+            int qnt = compras.get(index).getQnt();
+            compras.remove(index);
+            produtos.stream().filter(p -> (p.getId() == id)).forEachOrdered(p -> {
+                p.setQnt(p.getQnt() + qnt);
+                tot -= qnt * p.getPreco();
+            });
+        }
+        jSlider1.setMaximum(produtos.get(jComboBoxProduto.getSelectedIndex()).getQnt());
+        jLabel5.setText("Total: R$ " + String.format("%.2f", tot)); 
+        updateTable();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void createAllProducts(){
         ProdutoDAO dao = new ProdutoDAO();
@@ -425,6 +508,8 @@ public class VendaCreate extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxCliente;
     private javax.swing.JComboBox<String> jComboBoxProduto;
     private javax.swing.JLabel jLabel1;

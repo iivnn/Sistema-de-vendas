@@ -65,6 +65,54 @@ public class CompraDAO {
         return idCodigo;
     }
     
+    public void cancelCodigo(int id){
+        String query = "DELETE FROM codigo WHERE id_codigo = ?";
+        try {
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("erro: " + ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    
+    public void newCompra(Produto p , int id){
+        String query = "INSERT INTO compra VALUES (DEFAULT, ?, ?, ?, ?)";
+        try {
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.setInt(2, p.getId());
+            stmt.setInt(3, p.getQnt());
+            stmt.setDouble(4, p.getPreco());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("erro: " + ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    
+    public void updateQnt(Produto p){
+        String query = "UPDATE produto SET qnt_produto = ? WHERE id_produto = ?";
+        try {
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, p.getQnt());
+            stmt.setInt(2, p.getId());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("erro: " + ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        
+    }
+    
+    
+    
     public List<Compra> read(String data){
         List<Compra> compras = new ArrayList<>();
         String query = "SELECT cliente.id_cliente, cliente.nome_cliente, "

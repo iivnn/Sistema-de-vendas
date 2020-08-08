@@ -74,6 +74,7 @@ public class TabelaCompras extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Pesquisa de compras");
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
