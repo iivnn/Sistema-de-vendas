@@ -2,8 +2,11 @@
 
 Sistema de vendas simples para ter um controle básico pensado para micro empresas.
 
-Java SE versão 8.0.2610.12\n
+Java SE versão 8.0.2610.12
+
 NetBeans versão 12.0
+
+
 
 - Esse projeto pode ser importado para o netBeans caso queira modifica-lo;
 - Site para download do driver para conectar java ao mySQL https://downloads.mysql.com/archives/c-j/;
