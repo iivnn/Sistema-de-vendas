@@ -2,7 +2,7 @@
 
 Sistema de vendas simples para ter um controle básico pensado para micro empresas.
 
-Java SE versão 8.0.2610.12
+Java SE versão 8.0.2610.12\n
 NetBeans versão 12.0
 
 - Esse projeto pode ser importado para o netBeans caso queira modifica-lo;
