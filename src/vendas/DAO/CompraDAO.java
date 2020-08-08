@@ -122,7 +122,8 @@ public class CompraDAO {
                 + "produto WHERE codigo.data_codigo = ? AND "
                 + "codigo.id_codigo = compra.fk_codigo_compra AND "
                 + "produto.id_produto = compra.fk_produto_compra AND "
-                + "cliente.id_cliente = codigo.fk_cliente_codigo";
+                + "cliente.id_cliente = codigo.fk_cliente_codigo "
+                + "ORDER BY fk_codigo_compra DESC";
 
         try {
             stmt = con.prepareStatement(query);
@@ -147,7 +148,8 @@ public class CompraDAO {
                 + "produto WHERE codigo.id_codigo = ? AND codigo.id_codigo = "
                 + "compra.fk_codigo_compra AND produto.id_produto = "
                 + "compra.fk_produto_compra AND cliente.id_cliente = "
-                + "codigo.fk_cliente_codigo";
+                + "codigo.fk_cliente_codigo "
+                + "ORDER BY fk_codigo_compra DESC";
 
         try {
             stmt = con.prepareStatement(query);
@@ -172,7 +174,8 @@ public class CompraDAO {
                 + "produto WHERE codigo.fk_cliente_codigo = ? AND "
                 + "codigo.id_codigo = compra.fk_codigo_compra AND "
                 + "produto.id_produto = compra.fk_produto_compra AND "
-                + "cliente.id_cliente = codigo.fk_cliente_codigo";
+                + "cliente.id_cliente = codigo.fk_cliente_codigo "
+                + "ORDER BY fk_codigo_compra DESC";
 
         try {
             stmt = con.prepareStatement(query);
