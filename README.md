@@ -1,6 +1,6 @@
 # Sistema-de-vendas
 
-Sistema de vendas simples para ter um controle básico pensado para micro empresas.
+Sistema de vendas simples para ter um controle básico pensado para micro negócios.
 
 Java SE versão -> 8.0.2610.12
 
