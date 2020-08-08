@@ -242,15 +242,5 @@ public class ProdutoDAO {
            ConnectionFactory.closeConnection(con,stmt,rs);
        }
        return produtos;
-    }
-    
-    
-    
-    
-    
-    
-   
-   
-   
-   
+    }   
 }
