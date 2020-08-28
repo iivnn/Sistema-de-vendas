@@ -13,7 +13,7 @@ Build Tool -> Apache ant
 
 
 - Esse projeto pode ser importado para o netBeans caso queira modifica-lo;
-- Site para download do <a href="https://downloads.mysql.com/archives/c-j/">driver para conectar java ao mySQL (aconselho a versao 5.1.38) ;
+- Site para download do <a href="https://downloads.mysql.com/archives/c-j/">driver para conectar java ao mySQL</a> (aconselho a versao 5.1.38) ;
 - Para executar o programa é só ir na pasta /dist e executar o .jar;
 - Para executar o programa será necessário banco de dados mySQL local na máquina e o  JRE;
 - Para alterar algo relacionado a banco de dados modificar o arquivo ConnectionFactory;
