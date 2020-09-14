@@ -1,5 +1,7 @@
 # Sistema-de-vendas
 
+<img src="https://github.com/iivnn/Sistema-de-vendas/blob/master/sample.png">
+
 Sistema de vendas simples para ter um controle básico pensado para micro negócios.
 
 Java SE versão -> 8.0.2610.12
